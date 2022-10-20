@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from 'react-native';
 

@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { StatusBar } from 'react-native';
-import { Container, Top, Icon, Bottom, Balance, BalanceDescription } from './styles';
+import { Container, Top, SettingsIcon, Content, Balance, BalanceDescription, Button, EyeIcon, BalanceArea } from './styles';
 
 export function Header() {
+  const [showBalance, setShowBalance] = useState(false);
+
   return (
     <Container>
       <StatusBar
@@ -11,13 +14,25 @@ export function Header() {
       />
 
       <Top>
-        <Icon />
+        <Button>
+          <SettingsIcon />
+        </Button>
       </Top>
 
-      <Bottom>
-        <Balance>25,400</Balance>
-        <BalanceDescription>Saldo total</BalanceDescription>
-      </Bottom>
+      <Content>
+        <BalanceArea>
+          <Button onPress={() => setShowBalance(!showBalance)}>
+            <EyeIcon name={showBalance ? 'eye-off' : 'eye'} />
+          </Button>
+
+          <BalanceDescription>Saldo total</BalanceDescription>
+        </BalanceArea>
+
+        {showBalance 
+          ? <Balance>R$ 25,00</Balance>
+          : <Balance notShowBalance>••••••</Balance>
+        }
+      </Content>
     </Container>
   );
 }

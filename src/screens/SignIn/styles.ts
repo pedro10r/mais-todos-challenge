@@ -4,6 +4,7 @@ import { SvgProps } from 'react-native-svg';
 
 import LogoSvg from '../../assets/login.svg';
 
+
 export const Container = styled.View`
   flex: 1;
   padding: ${RFValue(40)}px ${RFValue(30)}px;
@@ -11,23 +12,10 @@ export const Container = styled.View`
 `;
 
 export const Logo = styled(LogoSvg).attrs({
-  width: RFValue(270),
-  height: RFValue(270),
+  width: RFValue(280),
+  height: RFValue(280),
 })<SvgProps>`
-  align-self: center;
-`;
-
-export const Header = styled.View`
-  margin-bottom: ${RFValue(50)}px;
-`;
-
-export const Title = styled.Text`
-  font-size: ${RFValue(24)}px;
-  color: ${({ theme }) => theme.colors['gray-400']};
-`;
-
-export const Form = styled.View`
   flex: 1;
-  width: 100%;
-  justify-content: flex-start;
+  align-self: center;
+  margin-top: ${RFValue(35)}px;
 `;

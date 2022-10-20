@@ -9,6 +9,7 @@ export default function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <StatusBar style="auto" />
+      
       <Routes />
     </ThemeProvider>
   );

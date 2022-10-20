@@ -1,14 +1,11 @@
-import { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
-import { Dashboard } from "../screens/Dashboard";
-import { SignIn } from "../screens/SignIn";
+import { AppRoutes } from "./app.routes";
 
 export function Routes() {
-  const [ auth, setAuth ] = useState<boolean>(false);
-  
   return (
-    <>
-      {auth ? <Dashboard /> : <SignIn />}
-    </>
+    <NavigationContainer>
+      <AppRoutes />
+    </NavigationContainer>
   );
 }

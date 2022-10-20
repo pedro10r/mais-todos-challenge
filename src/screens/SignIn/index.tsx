@@ -1,32 +1,30 @@
-import { Container, Form, Header, Logo, Title } from './styles';
+import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from 'react-native';
 
-import { Input } from '../../components/Form/Input';
-import { Button } from '../../components/Form/Button';
+import { Container, Logo } from './styles';
+
+import { Form } from './components/Form';
 
 export function SignIn() {
+  const navigation = useNavigation();
+
+  function handleGoDashboard() {
+    navigation.navigate('dashboard');
+  }
+
   return (
-    <Container>
-      <Logo />
-
-      <Header>
-        <Title>Bem vindo de volta!</Title>
-      </Header>
-
-      <Form>
-        <Input
-          placeholder='Usuário'
-          onChangeText={() => {}}
-        />
-        <Input
-          placeholder='Senha'
-          onChangeText={() => {}}
-        />
-
-        <Button
-          title='Entrar'
-          onPress={() => {}}
-        />
-      </Form>
-    </Container>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height" }
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Container>
+          <Logo />
+          
+          <Form onPress={handleGoDashboard} />
+        </Container>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }

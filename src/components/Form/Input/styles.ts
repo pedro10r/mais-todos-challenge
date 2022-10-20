@@ -5,9 +5,7 @@ export const Container = styled.View`
   margin-bottom: ${RFValue(16)}px;
 `;
 
-export const InputText = styled.TextInput.attrs(({ theme }) => ({
-  placeholderTextColor: theme?.colors?.gray,
-}))`
+export const InputText = styled.TextInput`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.shape};
   height: ${({ theme }) => theme.metrics.inputHeight}px;

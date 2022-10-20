@@ -5,10 +5,10 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.shape};
 `;
 
 export const Title = styled.Text`
   font-size: ${RFValue(24)}px;
-  color: ${({ theme }) => theme.colors.shape};
+  color: ${({ theme }) => theme.colors.primary};
 `;

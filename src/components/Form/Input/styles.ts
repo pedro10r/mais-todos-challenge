@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
-  margin-top: ${RFValue(16)}px;
+  margin-bottom: ${RFValue(16)}px;
 `;
 
 export const InputText = styled.TextInput.attrs(({ theme }) => ({

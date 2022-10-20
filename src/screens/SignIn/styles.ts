@@ -7,7 +7,7 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 export const Header = styled.View`
-  margin-bottom: ${RFValue(30)}px;
+  margin-bottom: ${RFValue(50)}px;
 `;
 
 export const Title = styled.Text`

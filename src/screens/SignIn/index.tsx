@@ -1,7 +1,8 @@
-import { Container, Form, Header, Title } from "./styles";
+import { Container, Form, Header, Title } from './styles';
 
 import LogoSvg from '../../assets/login.svg';
-import { Input } from "../../components/Form/Input";
+import { Input } from '../../components/Form/Input';
+import { Button } from '../../components/Form/Button';
 
 export function SignIn() {
   return (
@@ -14,12 +15,17 @@ export function SignIn() {
 
       <Form>
         <Input
-          placeholder="Usuário"
+          placeholder='Usuário'
           onChangeText={() => {}}
         />
         <Input
-          placeholder="Senha"
+          placeholder='Senha'
           onChangeText={() => {}}
+        />
+
+        <Button
+          title='Entrar'
+          onPress={() => {}}
         />
       </Form>
     </Container>

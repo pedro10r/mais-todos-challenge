@@ -1,9 +1,10 @@
-import { Text, View } from "react-native";
+import { Header } from "./components/Header";
+import { Container } from "./styles";
 
 export function Dashboard() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 24 }}>Dashboard</Text>
-    </View>
+    <Container>
+      <Header />
+    </Container>
   );
 }

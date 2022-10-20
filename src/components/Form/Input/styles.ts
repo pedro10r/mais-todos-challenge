@@ -12,4 +12,5 @@ export const InputText = styled.TextInput`
   border-radius: ${RFValue(10)}px;
   padding: ${RFValue(16)}px;
   font-size: ${RFValue(16)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;

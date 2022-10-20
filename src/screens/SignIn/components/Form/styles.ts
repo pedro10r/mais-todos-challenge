@@ -24,4 +24,5 @@ export const Description = styled.Text`
   margin-top: ${RFValue(10)}px;
   color: ${({ theme }) => theme.colors['gray-300']};
   font-size: ${RFValue(12)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;

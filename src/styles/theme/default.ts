@@ -14,6 +14,11 @@ export const defaultTheme = {
     shape: '#F6F4FD',
   },
 
+  fonts: {
+    regular: 'Lato_400Regular',
+    bold: 'Lato_700Bold'
+  },
+
   metrics: {
     paddingHorizontal: RFValue(24),
     inputHeight: RFValue(52),

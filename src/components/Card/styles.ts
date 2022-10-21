@@ -17,14 +17,14 @@ export const Container = styled.View<TypeProps>`
   justify-content: space-between;
   margin-bottom: ${RFValue(14)}px;
 
-  box-shadow: 0px 5px 8px ${({ theme, type }) =>
+  box-shadow: 0px 3px 10px ${({ theme, type }) =>
     type === 'credit' ? theme.colors.secondaryLight : theme.colors.primaryLight
   };
 
-  border: 1.5px;
-  border-color: ${({ theme, type }) =>
-    type === 'credit' ? theme.colors.secondaryLight : theme.colors.primaryLight
-  };
+${({ type }) => type === 'debit' && css`
+    border: 1px;
+    border-color: ${({ theme }) => theme.colors.primaryLight};
+  `}
 `;
 
 export const Title = styled.Text<TypeProps>`

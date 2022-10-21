@@ -4,7 +4,6 @@ import {
   ContentTransaction,
   Date,
   Description,
-  Divider,
   Icon,
   StartArea,
   Value
@@ -23,8 +22,6 @@ interface Props {
 export function Transaction ({ data }: Props) {
   return (
     <Container>
-      <Divider />
-      
       <ContentTransaction>
       <StartArea>
         <Icon />

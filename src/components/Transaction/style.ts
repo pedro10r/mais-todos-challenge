@@ -4,11 +4,6 @@ import { Feather } from '@expo/vector-icons';
 
 export const Container = styled.View``;
 
-export const Divider = styled.View`
-  height: ${RFValue(1)}px;
-  background-color: ${({ theme }) => theme.colors.primaryLight};
-`;
-
 export const ContentTransaction = styled.View`
   flex-direction: row;
   align-items: center;

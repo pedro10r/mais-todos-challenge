@@ -23,7 +23,7 @@ export const Top = styled.View`
 
 export const SettingsIcon = styled(Feather).attrs(({ theme }) => ({
   name: 'settings',
-  color: theme?.colors?.secondary
+  color: theme?.colors?.shape
 }))`
   font-size: ${RFValue(24)}px;
 `;

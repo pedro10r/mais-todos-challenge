@@ -26,6 +26,10 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
 
+export const Divider = styled.View`
+  height: ${RFValue(1)}px;
+  background-color: ${({ theme }) => theme.colors.primaryLight};
+`;
 
 export const Content = styled.View`
   flex: 1;

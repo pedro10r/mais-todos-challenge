@@ -9,7 +9,8 @@ import {
   TransactionHeader,
   TransactionTitle,
   Gutter,
-  TransactionList
+  TransactionList,
+  Divider
 } from "./styles";
 
 import api from "../../services/api";
@@ -26,8 +27,8 @@ export function Dashboard() {
   const [transactions, setTransactions] = useState<TransactionDTO[]>([]);
   const [balance, setBalance] = useState<BalanceDTO>();
   const [loading, setLoading] = useState(true);
-  const [creditCardBalance, setCreditCardBalance] = useState<number>();
-  const [debitCardBalance, setDebitCardBalance] = useState<number>();
+  const [creditCardBalance, setCreditCardBalance] = useState<number>(0);
+  const [debitCardBalance, setDebitCardBalance] = useState<number>(0);
 
   useEffect(() => {
     async function fetchTotalBalance() {
@@ -107,10 +108,13 @@ export function Dashboard() {
           <Gutter>Valor</Gutter>
         </TransactionHeader>
 
+        <Divider />
+
         {loading ? <Loading /> :
           <TransactionList
             data={transactions}
             keyExtractor={item => String(item.id) + uuid.v4()}
+            ItemSeparatorComponent={() => <Divider />}
             renderItem={({ item }) =>
               <Transaction data={item} />
             }

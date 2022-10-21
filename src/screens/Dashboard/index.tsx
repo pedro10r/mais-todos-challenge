@@ -2,6 +2,7 @@ import { Container, AreaTitle, Title, Content } from "./styles";
 
 import { Header } from "./components/Header";
 import { Card } from "../../components/Card";
+import { Transactions } from "./components/Transactions";
 
 export function Dashboard() {
 
@@ -24,6 +25,8 @@ export function Dashboard() {
           title='Cartão de débito'
           value='R$ 80,00'
         />
+
+        <Transactions />
       </Content>
       
     </Container>

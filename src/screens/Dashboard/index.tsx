@@ -26,9 +26,11 @@ export function Dashboard() {
   const [transactions, setTransactions] = useState<TransactionDTO[]>([]);
   const [balance, setBalance] = useState<BalanceDTO>();
   const [loading, setLoading] = useState(true);
+  const [creditCardBalance, setCreditCardBalance] = useState<number>();
+  const [debitCardBalance, setDebitCardBalance] = useState<number>();
 
   useEffect(() => {
-    async function fetchBalanceTotal() {
+    async function fetchTotalBalance() {
       try {
         const response = await api.get('/balance');
         setBalance(response.data);
@@ -51,8 +53,31 @@ export function Dashboard() {
     }
 
     fetchTransactions();
-    fetchBalanceTotal();
+    fetchTotalBalance();
   }, []);
+
+  useEffect(() => {
+    sumBalance();
+  }, [transactions]);
+
+  function sumBalance() {
+    if (transactions) {
+      const typeCredit = transactions.filter(prevState => prevState.tipoLancamento === 'C');
+      const balancesCredit = typeCredit.map(element => element.valorTransacao);
+      var resultCredit = balancesCredit.reduce(function(sum, i) {
+          return sum + i;
+      }, 0);
+
+      const typeDebit = transactions.filter(prevState => prevState.tipoLancamento === 'D');
+      const balancesDebit = typeDebit.map(element => element.valorTransacao);
+      var resultDebit = balancesDebit.reduce(function(sum, i) {
+          return sum + i;
+      }, 0);
+
+      setCreditCardBalance(resultCredit);
+      setDebitCardBalance(resultDebit);
+    }
+  }
 
   return (
     <Container>
@@ -69,12 +94,12 @@ export function Dashboard() {
         <Card
           type='credit'
           title='Cartão de crédito'
-          value='R$ 120,00'
+          value={`R$ ${creditCardBalance},00`}
         />
         <Card
           type='debit'
           title='Cartão de débito'
-          value='R$ 80,00'
+          value={`R$ ${debitCardBalance},00`}
         />
 
         <TransactionHeader>

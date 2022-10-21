@@ -7,7 +7,7 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.shape};
 `;
 
-export const Content = styled.View`
+export const AreaTitle = styled.View`
   width: 100%;
   height: ${({ theme }) => theme.metrics.inputHeight}px;
   background-color: ${({ theme }) => theme.colors.primary};
@@ -21,4 +21,10 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.shape};
   font-size: ${RFValue(16)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
+`;
+
+
+export const Content = styled.View`
+  width: 100%;
+  padding: ${RFValue(24)}px;
 `;

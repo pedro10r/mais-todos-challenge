@@ -10,7 +10,9 @@ export const defaultTheme = {
     'gray-500': '#262626',
 
     primary: '#6C63FF',
-    secondary: '#F9A826',
+    primaryLight: '#DED4F7',
+    secondary: '#FF7D3B',
+    secondaryLight: '#FFC2A3',
     shape: '#F6F4FD',
   },
 

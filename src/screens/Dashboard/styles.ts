@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 import { FlatList, FlatListProps } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 import { TransactionDTO } from "../../dtos/transactionDTO";
 
@@ -57,8 +56,5 @@ export const Gutter = styled.Text`
 export const TransactionList = styled(
   FlatList as new (props: FlatListProps<TransactionDTO>) => FlatList<TransactionDTO>)
 .attrs({
-  contentContainerStyle: {
-    paddingBottom: getBottomSpace(),
-  },
   showsVerticalScrollIndicator: false,
 })``;

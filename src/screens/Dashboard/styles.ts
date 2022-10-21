@@ -1,5 +1,9 @@
-import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+import { FlatList, FlatListProps } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+
+import { TransactionDTO } from "../../dtos/transactionDTO";
 
 export const Container = styled.View`
   flex: 1;
@@ -29,3 +33,32 @@ export const Content = styled.View`
   width: 100%;
   padding: ${RFValue(24)}px;
 `;
+
+export const TransactionHeader = styled.View`
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: ${RFValue(10)}px;;
+`;
+
+export const TransactionTitle = styled.Text`
+  font-size: ${RFValue(16)}px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const Gutter = styled.Text`
+  font-size: ${RFValue(14)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const TransactionList = styled(
+  FlatList as new (props: FlatListProps<TransactionDTO>) => FlatList<TransactionDTO>)
+.attrs({
+  contentContainerStyle: {
+    paddingBottom: getBottomSpace(),
+  },
+  showsVerticalScrollIndicator: false,
+})``;

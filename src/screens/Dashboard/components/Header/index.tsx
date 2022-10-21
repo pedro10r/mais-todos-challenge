@@ -1,9 +1,29 @@
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
-import { Container, Top, SettingsIcon, Content, Balance, BalanceDescription, Button, EyeIcon, BalanceArea } from './styles';
 
-export function Header() {
+import { useTheme } from 'styled-components';
+import { Loading } from '../../../../components/Loading';
+
+import {
+  Container,
+  Top,
+  SettingsIcon,
+  Content,
+  Balance,
+  BalanceDescription,
+  Button,
+  EyeIcon,
+  BalanceArea
+} from './styles';
+
+interface Props {
+  balance: number;
+  loading: boolean;
+}
+
+export function Header({ balance, loading }: Props) {
   const [showBalance, setShowBalance] = useState(false);
+  const theme = useTheme()
 
   return (
     <Container>
@@ -29,7 +49,7 @@ export function Header() {
         </BalanceArea>
 
         {showBalance 
-          ? <Balance>R$ 25,00</Balance>
+          ? <Balance>{ !loading ? `R$ ${balance},00` : <Loading color={theme.colors.white} />}</Balance>
           : <Balance notShowBalance>••••••</Balance>
         }
       </Content>

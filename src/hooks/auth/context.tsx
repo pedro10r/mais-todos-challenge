@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   
   async function signIn(email: string, password: string) {
-    const userEmail = 'teste@email.com';
+    const userEmail = 'teste@teste.com';
     const userPassword = '123';
 
     if (email === userEmail && password === userPassword) {

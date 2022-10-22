@@ -65,7 +65,7 @@ export function Form() {
         control={formControll}
         placeholder='Senha'
         error={errors.password && errors?.password.message}
-        isError={!!errors.email}
+        isError={!!errors.password}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         autoCorrect={false}

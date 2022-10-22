@@ -22,8 +22,8 @@ export const Top = styled.View`
 `;
 
 export const SettingsIcon = styled(Feather).attrs(({ theme }) => ({
-  name: 'settings',
-  color: theme?.colors?.shape
+  name: 'power',
+  color: theme?.colors?.secondary
 }))`
   font-size: ${RFValue(24)}px;
 `;

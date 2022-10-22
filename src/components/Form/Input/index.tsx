@@ -5,7 +5,7 @@ import { Container, InputText } from "./styles";
 interface InputProps extends TextInputProps {
   placeholder: string;
   value?: string;
-  onChangeText: () => void;
+  onChangeText: (text: string) => void;
 }
 
 export function Input({ placeholder, value, onChangeText, ...rest }: InputProps) {

@@ -6,10 +6,12 @@ import { Input } from '../../../../components/Form/Input';
 import { Button } from '../../../../components/Form/Button';
 
 interface FormProps {
-  onPress: () => void;
+  onSignIn: () => void;
+  onChangeEmail: (text: string) => void;
+  onChangePass: (text: string) => void;
 }
 
-export function Form({ onPress }: FormProps) {
+export function Form({ onSignIn, onChangeEmail, onChangePass }: FormProps) {
   const [isFocus, setIsFocus] = useState(false);
 
   return (
@@ -18,20 +20,23 @@ export function Form({ onPress }: FormProps) {
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         placeholder='Usuário'
-        onChangeText={() => {}}
+        onChangeText={onChangeEmail}
         autoCorrect={false}
+        keyboardType='email-address'
+        autoCapitalize='none'
       />
       <Input
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         placeholder='Senha'
-        onChangeText={() => {}}
+        onChangeText={onChangePass}
         autoCorrect={false}
+        secureTextEntry
       />
 
       <Button
         title='Entrar'
-        onPress={onPress}
+        onPress={onSignIn}
       />
 
       <Footer>

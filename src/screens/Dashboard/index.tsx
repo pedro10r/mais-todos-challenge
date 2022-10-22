@@ -23,12 +23,16 @@ import { Loading } from "../../components/Loading";
 import { TransactionDTO } from "../../dtos/transactionDTO";
 import { BalanceDTO } from "../../dtos/balanceDTO";
 
+import { useAuth } from "../../hooks/auth";
+
 export function Dashboard() {
   const [transactions, setTransactions] = useState<TransactionDTO[]>([]);
   const [balance, setBalance] = useState<BalanceDTO>();
   const [loading, setLoading] = useState(true);
   const [creditCardBalance, setCreditCardBalance] = useState<number>(0);
   const [debitCardBalance, setDebitCardBalance] = useState<number>(0);
+
+  const { signOut } = useAuth();
 
   useEffect(() => {
     async function fetchTotalBalance() {
@@ -80,11 +84,16 @@ export function Dashboard() {
     }
   }
 
+  function handleSignOut() {
+    signOut();
+  }
+
   return (
     <Container>
       <Header
         balance={balance?.saldo as number}
         loading={loading}
+        signOut={handleSignOut}
       />
 
       <AreaTitle>
@@ -115,9 +124,7 @@ export function Dashboard() {
             data={transactions}
             keyExtractor={item => String(item.id) + uuid.v4()}
             ItemSeparatorComponent={() => <Divider />}
-            renderItem={({ item }) =>
-              <Transaction data={item} />
-            }
+            renderItem={({ item }) => <Transaction data={item} />}
           />
         }
       </Content>

@@ -19,9 +19,10 @@ import {
 interface Props {
   balance: number;
   loading: boolean;
+  signOut: () => void;
 }
 
-export function Header({ balance, loading }: Props) {
+export function Header({ balance, loading, signOut }: Props) {
   const [showBalance, setShowBalance] = useState(false);
   const theme = useTheme()
 
@@ -34,7 +35,7 @@ export function Header({ balance, loading }: Props) {
       />
 
       <Top>
-        <Button>
+        <Button onPress={signOut}>
           <SettingsIcon />
         </Button>
       </Top>

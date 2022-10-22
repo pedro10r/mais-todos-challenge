@@ -1,15 +1,23 @@
-import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from 'react-native';
 
 import { Container, Logo } from './styles';
 
 import { Form } from './components/Form';
 
-export function SignIn() {
-  const navigation = useNavigation();
+import { useAuth } from '../../hooks/auth';
 
-  function handleGoDashboard() {
-    navigation.navigate('dashboard');
+export function SignIn() {
+  const { signIn } = useAuth();
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  console.log(email)
+  console.log(password)
+
+  function handleSignIn() {
+    signIn(email, password);
   }
 
   return (
@@ -21,7 +29,11 @@ export function SignIn() {
         <Container>
           <Logo />
           
-          <Form onPress={handleGoDashboard} />
+          <Form 
+            onSignIn={handleSignIn}
+            onChangeEmail={setEmail}
+            onChangePass={setPassword}
+          />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

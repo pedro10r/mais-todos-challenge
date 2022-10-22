@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Dashboard } from '../screens/Dashboard';
+import { SignIn } from '../screens/SignIn';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-export function AppRoutes() {
+export function AuthRoutes() {
   return (
     <Navigator
       screenOptions={{
@@ -12,8 +12,8 @@ export function AppRoutes() {
       }}
     >
       <Screen
-        name="dashboard"
-        component={Dashboard}
+        name="signIn"
+        component={SignIn}
       />
     </Navigator>
   );

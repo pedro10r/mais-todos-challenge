@@ -8,18 +8,6 @@ import { Form } from './components/Form';
 import { useAuth } from '../../hooks/auth';
 
 export function SignIn() {
-  const { signIn } = useAuth();
-
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-
-  console.log(email)
-  console.log(password)
-
-  function handleSignIn() {
-    signIn(email, password);
-  }
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height" }
@@ -29,11 +17,7 @@ export function SignIn() {
         <Container>
           <Logo />
           
-          <Form 
-            onSignIn={handleSignIn}
-            onChangeEmail={setEmail}
-            onChangePass={setPassword}
-          />
+          <Form />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

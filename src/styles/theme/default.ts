@@ -14,6 +14,7 @@ export const defaultTheme = {
     secondary: '#FF7D3B',
     secondaryLight: '#FFC2A3',
     shape: '#F6F4FD',
+    danger: '#E25858',
   },
 
   fonts: {

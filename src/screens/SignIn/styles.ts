@@ -17,5 +17,5 @@ export const Logo = styled(LogoSvg).attrs({
 })<SvgProps>`
   flex: 1;
   align-self: center;
-  margin-top: ${RFValue(35)}px;
+  margin-top: ${RFValue(15)}px;
 `;

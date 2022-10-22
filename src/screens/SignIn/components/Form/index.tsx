@@ -18,8 +18,8 @@ interface FormData {
 const schema = Yup.object().shape({
   email: Yup
     .string()
-    .email()
-    .required('E-mail é obrigatário'),
+    .email('Digite um email válido')
+    .required('Email é obrigatário'),
   password: Yup
     .string()
     .required('Senha é obrigatário')

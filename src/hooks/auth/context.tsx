@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { Alert } from 'react-native';
 import * as auth from '../../services/mock-api-auth';
 
 interface AuthContextData {
@@ -26,6 +27,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const response = await auth.signIn();
 
       setUser(response.user);
+    } else {
+      Alert.alert(
+        "Usuário inválido",
+        "Entre com o usuário de teste",
+        [
+          { text: "OK", onPress: () => {}}
+        ]
+      );
     }
   }
 

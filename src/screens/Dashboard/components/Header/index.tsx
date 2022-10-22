@@ -7,13 +7,12 @@ import { Loading } from '../../../../components/Loading';
 import {
   Container,
   Top,
-  SettingsIcon,
+  PowerIcon,
   Content,
   Balance,
   BalanceDescription,
   Button,
   EyeIcon,
-  BalanceArea
 } from './styles';
 
 interface Props {
@@ -36,18 +35,16 @@ export function Header({ balance, loading, signOut }: Props) {
 
       <Top>
         <Button onPress={signOut}>
-          <SettingsIcon />
+          <PowerIcon />
+        </Button>
+
+        <Button onPress={() => setShowBalance(!showBalance)}>
+          <EyeIcon name={showBalance ? 'eye-off' : 'eye'} />
         </Button>
       </Top>
 
       <Content>
-        <BalanceArea>
-          <Button onPress={() => setShowBalance(!showBalance)}>
-            <EyeIcon name={showBalance ? 'eye-off' : 'eye'} />
-          </Button>
-
-          <BalanceDescription>Saldo total</BalanceDescription>
-        </BalanceArea>
+        <BalanceDescription>Saldo total</BalanceDescription>
 
         {showBalance 
           ? <Balance>{ !loading ? `R$ ${balance},00` : <Loading color={theme.colors.white} />}</Balance>

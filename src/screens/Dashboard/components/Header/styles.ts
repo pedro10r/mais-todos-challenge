@@ -15,30 +15,17 @@ export const Container = styled.View`
 
 export const Top = styled.View`
   width: 100%;
-  margin-top: ${RFValue(24)}px;
-  padding-top: ${RFValue(5)}px;
-  padding-bottom: ${RFValue(18)}px;
-  align-items: flex-start;
-`;
-
-export const SettingsIcon = styled(Feather).attrs(({ theme }) => ({
-  name: 'power',
-  color: theme?.colors?.secondary
-}))`
-  font-size: ${RFValue(24)}px;
-`;
-
-export const Content = styled.View`
-  flex: 1;
-  width: 100%;
-  align-items: flex-end;
+  margin: ${RFValue(30)}px 0 ${RFValue(36)}px 0;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 `;
 
-export const Button = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.7,
-})`
-  margin-right: ${RFValue(12)}px;
+export const PowerIcon = styled(Feather).attrs(({ theme }) => ({
+  name: 'power',
+  color: theme?.colors?.secondary
+}))`
+  font-size: ${RFValue(22)}px;
 `;
 
 export const EyeIcon = styled(Feather).attrs(({ theme }) => ({
@@ -47,13 +34,16 @@ export const EyeIcon = styled(Feather).attrs(({ theme }) => ({
   font-size: ${RFValue(22)}px;
 `;
 
-export const BalanceArea = styled.View`
+export const Content = styled.View`
+  flex: 1;
   width: 100%;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-bottom: ${RFValue(3)}px;
+  align-items: flex-start;
+  justify-content: space-between;
 `;
+
+export const Button = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})``;
 
 export const BalanceDescription = styled.Text`
   font-size: ${RFValue(14)}px;

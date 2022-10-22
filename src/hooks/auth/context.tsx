@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     } else {
       Alert.alert(
         "Usuário inválido",
-        "Entre com o usuário de teste",
+        "Entre com o email e senha de teste",
         [
           { text: "OK", onPress: () => {}}
         ]

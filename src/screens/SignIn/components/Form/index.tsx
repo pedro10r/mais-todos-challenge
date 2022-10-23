@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import * as Yup from 'yup';
 import { Control, FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -9,21 +8,12 @@ import { Input } from '../../../../components/Form/Input';
 import { Button } from '../../../../components/Form/Button';
 
 import { useAuth } from '../../../../hooks/auth';
+import { schema } from './validate';
 
 interface FormData {
   email: string;
   password: string;
 }
-
-const schema = Yup.object().shape({
-  email: Yup
-    .string()
-    .email('Digite um email válido')
-    .required('Email é obrigatário'),
-  password: Yup
-    .string()
-    .required('Senha é obrigatário')
-})
 
 export function Form() {
   const [isFocus, setIsFocus] = useState(false);
@@ -39,9 +29,7 @@ export function Form() {
     handleSubmit,
     formState: { errors },
     clearErrors
-} = useForm<FormData>({
-    resolver: yupResolver(schema)
-  });
+  } = useForm<FormData>({ resolver: yupResolver(schema) });
 
   const formControll = control as unknown as Control<FieldValues, any>;
 

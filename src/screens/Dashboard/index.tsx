@@ -24,6 +24,7 @@ import { TransactionDTO } from "../../dtos/transactionDTO";
 import { BalanceDTO } from "../../dtos/balanceDTO";
 
 import { useAuth } from "../../hooks/auth";
+import { ConfirmModal } from "../../components/Modal";
 
 export function Dashboard() {
   const [transactions, setTransactions] = useState<TransactionDTO[]>([]);
@@ -31,6 +32,7 @@ export function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [creditCardBalance, setCreditCardBalance] = useState<number>(0);
   const [debitCardBalance, setDebitCardBalance] = useState<number>(0);
+  const [openModal, setOpenModal] = useState(false);
 
   const { signOut } = useAuth();
 
@@ -85,7 +87,10 @@ export function Dashboard() {
   }
 
   function handleSignOut() {
-    signOut();
+    setOpenModal(false)
+    setTimeout(() => {
+      signOut();
+    }, 1000);
   }
 
   return (
@@ -93,8 +98,18 @@ export function Dashboard() {
       <Header
         balance={balance?.saldo as number}
         loading={loading}
-        signOut={handleSignOut}
+        signOut={() => setOpenModal(true)}
       />
+
+      {openModal && (
+        <ConfirmModal
+          title='Sair do app?'
+          closeText='Cancelar'
+          confirmText='Sim'
+          onClose={() => setOpenModal(false)}
+          onConfirm={handleSignOut}
+        />
+      )}
 
       <AreaTitle>
         <Title>Extrato</Title>

@@ -52,11 +52,8 @@ export const BalanceDescription = styled.Text`
 `;
 
 export const Balance = styled.Text<BalanceProps>`
-  font-size: ${RFValue(36)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${({ theme }) => theme.colors.white};
-
-  ${({ notShowBalance }) => notShowBalance && css`
-    font-size: ${RFValue(24)}px;
-  `}
+  font-size: ${({ notShowBalance }) =>
+    notShowBalance ? RFValue(24) : RFValue(36)}px;
 `;

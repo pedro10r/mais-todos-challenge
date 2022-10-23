@@ -10,6 +10,7 @@ interface Props {
 
 export function Loading({ color, size }: Props) {
   const theme = useTheme();
+  
   return (
     <Container>
       <ActivityIndicator color={color ? color : theme.colors.primary} size={size} />

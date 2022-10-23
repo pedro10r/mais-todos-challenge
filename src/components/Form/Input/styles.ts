@@ -13,7 +13,7 @@ export const InputText = styled.TextInput<Props>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.shape};
   height: ${({ theme }) => theme.metrics.inputHeight}px;
-  border-radius: ${RFValue(10)}px;
+  border-radius: 12px;
   padding: ${RFValue(16)}px;
   font-size: ${RFValue(16)}px;
   font-family: ${({ theme }) => theme.fonts.regular};

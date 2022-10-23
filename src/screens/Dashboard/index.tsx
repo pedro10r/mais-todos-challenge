@@ -47,28 +47,30 @@ export function Dashboard() {
   const { data: transactions, isLoading: loadingTransactions } = useQuery('transactions', fetchTransactions);
   const { data: balance, isLoading: loadingBalance } = useQuery('balance', fetchTotalBalance);
 
-  useEffect(() => {
-    sumBalance();
-  }, [transactions]);
-
-  function sumBalance() {
+  function sumBalance(typeCard: 'C' | 'D') {
     if (transactions) {
-      const typeCredit = transactions.filter(prevState => prevState.tipoLancamento === 'C');
-      const balancesCredit = typeCredit.map(element => element.valorTransacao);
-      var resultCredit = balancesCredit.reduce(function(sum, i) {
+      const type = transactions.filter(element => element.tipoLancamento === typeCard);
+      const balance = type.map(element => element.valorTransacao);
+
+      var result = balance.reduce(function(sum, i) {
           return sum + i;
       }, 0);
 
-      const typeDebit = transactions.filter(prevState => prevState.tipoLancamento === 'D');
-      const balancesDebit = typeDebit.map(element => element.valorTransacao);
-      var resultDebit = balancesDebit.reduce(function(sum, i) {
-          return sum + i;
-      }, 0);
-
-      setCreditCardBalance(resultCredit);
-      setDebitCardBalance(resultDebit);
+      switch (typeCard) {
+        case 'C':
+          return setCreditCardBalance(result);
+        case 'D':
+          return setDebitCardBalance(result);
+        default:
+          return null;
+      }
     }
   }
+
+  useEffect(() => {
+    sumBalance('C');
+    sumBalance('D');
+  }, [transactions]);
 
   function handleSignOut() {
     setOpenModal(false);

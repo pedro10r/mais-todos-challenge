@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
-
 import { useTheme } from 'styled-components';
+
 import { Loading } from '../../../../components/Loading';
 
 import {
@@ -47,9 +47,13 @@ export function Header({ balance, loading, signOut }: Props) {
       <Content>
         <BalanceDescription>Saldo total</BalanceDescription>
 
-        {!showBalance 
-          ? <Balance>{ !loading ? `R$ ${balance},00` : <Loading color={theme.colors.white} />}</Balance>
-          : <Balance notShowBalance>••••••</Balance>
+        {showBalance 
+          ? <Balance>
+              {!loading ? `R$ ${balance || 0},00` : <Loading color={theme.colors.white} />}
+            </Balance>
+          : <Balance notShowBalance>
+              {!loading ? '•••••' : <Loading color={theme.colors.white} />}
+            </Balance>
         }
       </Content>
     </Container>

@@ -12,8 +12,10 @@ export function Card({ type, title, value }: Props) {
       <Title type={type}>
         {title}
       </Title>
+
       <Balance>
         <DescriptionTitle type={type}>Valor total</DescriptionTitle>
+        
         <Total type={type}>
           {value}
         </Total>

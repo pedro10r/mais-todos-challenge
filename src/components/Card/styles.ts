@@ -11,7 +11,7 @@ export const Container = styled.View<TypeProps>`
     type === 'credit' ? theme.colors.secondary : theme.colors.white
   };
   padding: ${RFValue(22)}px;
-  border-radius: ${RFValue(18)}px;
+  border-radius: 20px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

@@ -23,6 +23,7 @@ interface Props {
 
 export function Header({ balance, loading, signOut }: Props) {
   const [showBalance, setShowBalance] = useState(false);
+  
   const theme = useTheme()
 
   return (
@@ -46,7 +47,7 @@ export function Header({ balance, loading, signOut }: Props) {
       <Content>
         <BalanceDescription>Saldo total</BalanceDescription>
 
-        {showBalance 
+        {!showBalance 
           ? <Balance>{ !loading ? `R$ ${balance},00` : <Loading color={theme.colors.white} />}</Balance>
           : <Balance notShowBalance>••••••</Balance>
         }

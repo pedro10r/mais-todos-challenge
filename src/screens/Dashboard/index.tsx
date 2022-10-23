@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useQuery } from 'react-query';
 import uuid from 'react-native-uuid';
 
 import {
@@ -19,49 +20,32 @@ import { Header } from "./components/Header";
 import { Card } from "../../components/Card";
 import { Transaction } from "../../components/Transaction";
 import { Loading } from "../../components/Loading";
+import { ConfirmModal } from "../../components/Modal";
 
 import { TransactionDTO } from "../../dtos/transactionDTO";
 import { BalanceDTO } from "../../dtos/balanceDTO";
 
 import { useAuth } from "../../hooks/auth";
-import { ConfirmModal } from "../../components/Modal";
 
 export function Dashboard() {
-  const [transactions, setTransactions] = useState<TransactionDTO[]>([]);
-  const [balance, setBalance] = useState<BalanceDTO>();
-  const [loading, setLoading] = useState(true);
   const [creditCardBalance, setCreditCardBalance] = useState<number>(0);
   const [debitCardBalance, setDebitCardBalance] = useState<number>(0);
   const [openModal, setOpenModal] = useState(false);
 
   const { signOut } = useAuth();
 
-  useEffect(() => {
-    async function fetchTotalBalance() {
-      try {
-        const response = await api.get('/balance');
-        setBalance(response.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
+  async function fetchTransactions() {
+    const { data } = await api.get('/transactions');
+    return data as TransactionDTO[];
+  }
 
-    async function fetchTransactions() {
-      try {
-        const response = await api.get('/transactions');
-        setTransactions(response.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
+  async function fetchTotalBalance() {
+    const { data } = await api.get('/balance');
+    return data as BalanceDTO;
+  }
 
-    fetchTransactions();
-    fetchTotalBalance();
-  }, []);
+  const { data: transactions, isLoading: loadingTransactions } = useQuery('transactions', fetchTransactions);
+  const { data: balance, isLoading: loadingBalance } = useQuery('balance', fetchTotalBalance);
 
   useEffect(() => {
     sumBalance();
@@ -87,7 +71,7 @@ export function Dashboard() {
   }
 
   function handleSignOut() {
-    setOpenModal(false)
+    setOpenModal(false);
     setTimeout(() => {
       signOut();
     }, 1000);
@@ -97,7 +81,7 @@ export function Dashboard() {
     <Container>
       <Header
         balance={balance?.saldo as number}
-        loading={loading}
+        loading={loadingBalance}
         signOut={() => setOpenModal(true)}
       />
 
@@ -134,7 +118,7 @@ export function Dashboard() {
 
         <Divider />
 
-        {loading ? <Loading /> :
+        {loadingTransactions ? <Loading /> :
           <TransactionList
             data={transactions}
             keyExtractor={item => String(item.id) + uuid.v4()}

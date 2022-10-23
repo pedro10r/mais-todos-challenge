@@ -37,7 +37,7 @@ export const Button = styled.TouchableOpacity.attrs({
 `;
 
 export const TextButton = styled.Text<Props>`
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue(14)}px;
   text-transform: uppercase;
   font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme, type }) =>

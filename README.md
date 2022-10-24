@@ -3,7 +3,7 @@
 #### App desenvolvido com React Native (Expo)
 
 #### Como usar:
-Depois de clonar o repo, rode `npm install`
+Depois de clonar o repo, rode `npm install` e para rodar o projeto em sua máquina `npx expo start` ou `expo start`
 
 **Importante**: Para parte de `Auth` está usando dados mocados simulando uma chamada api, então você precisará usar os seguintes dados no Login: **Email**: _teste@email.com_; **Senha**: _123_;
 
